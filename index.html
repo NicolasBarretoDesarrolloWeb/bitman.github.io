@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bitman</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .header-S {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .curva-header {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header (Logo y Navbar) -->
+  <header class="header-S flex items-center justify-between p-4 bg-white shadow">
+
+    <!-- Curva decorativa -->
+<svg class="curva-header" viewBox="0 0 600 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed; stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <path d="M0,300 C200,280 400,180 600,0 L600,300 Z" fill="url(#grad1)" />
+</svg>
+
+
+    <div class="header-content flex items-center justify-between w-full">
+      <div class="flex items-center gap-2">
+        <!-- Logotipo imagen -->
+        <a href="#" class="logo-independiente">
+          <img src="imagenes/logotipo.png" alt="Logo" class="h-20 w-auto" />
+        </a>
+
+        <!-- Logo BIMANT con elipse -->
+        <div class="flex flex-col items-center ml-0.5">
+          <div class="text-3xl font-bold tracking-widest text-gray-800 leading-tight bimant-logo-text">BIMANT</div>
+          <div class="w-[130px] h-[4px] bg-gradient-to-r from-purple-900 to-purple-500 rounded-full -mt-1"></div>
+        </div>
+      </div>
+
+      <!-- Menú de navegación -->
+      <nav class="navbar">
+        <div class="container">
+          <ul class="nav-links flex gap-6">
+            <li><a href="#servicios">Nosotros</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenido principal -->
+  <main>
+    <!-- Slider -->
+    <section class="slider-container">
+      <button id="prevBtn" class="slider-btn prev">&laquo;</button>
+      <button id="nextBtn" class="slider-btn next">&raquo;</button>
+
+      <div class="slider">
+        <img src="imagenes/imagen1.jpg" alt="Metalurgia 1" class="active">
+        <div class="overlay active">
+          <h2 class="overlay-text">Metalurgia de precisión</h2>
+          <button class="btn-cotizar">Cotizar precios</button>
+        </div>
+
+        <img src="imagenes/imagen2.jpg" alt="Metalurgia 2">
+        <div class="overlay">
+          <h2 class="overlay-text">Fabricación industrial</h2>
+          <button class="btn-cotizar">Cotizar precios</button>
+        </div>
+
+        <img src="imagenes/imagen3.jpg" alt="Metalurgia 3">
+        <div class="overlay">
+          <h2 class="overlay-text">Soluciones a medida</h2>
+          <button class="btn-cotizar">Cotizar precios</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Secciones de contenido -->
+  <section id="servicios" class="content-section servicios-section">
+  <div class="container">
+    <h2 class="section-title">¿QUIENES SOMOS?</h2>
+    <p class="frase-estilizada">
+      <em>“Nuestro enfoque es contribuir a la eficiencia, calidad, seguridad y sostenibilidad de los diferentes procesos.”</em>
+    </p>
+    <p class="descripcion descripcion-ampliada">
+      Somos una empresa familiar instalada en la provincia del Chaco. Benedicto Barreto fue quien sentó nuestras bases, nos enseñó el oficio y la pasión por el trabajo. Así, tres generaciones después, seguimos con el mismo compromiso, incorporando nuevas tecnologías en nuestra labor.
+    </p>
+  </div>
+</section>
+<!-- Sección principal -->
+<section id="productos" class="content-section">
+  <div class="container">
+    <h2>¿Qué realizamos?</h2> 
+    <p>Diseño, cálculo, montaje y mantenimiento de:</p> 
+    <div class="service-buttons">
+      <button onclick="toggleSection('ventilacion')">Sistemas de ventilación</button>
+      <button onclick="toggleSection('aire')">Sistemas de aire comprimido</button>
+      <button onclick="toggleSection('agua')">Cañerías de agua a presión</button>
+      <button onclick="toggleSection('metalurgia')">Metalúrgica en general</button>
+    </div>
+  </div>
+</section>
+
+<!-- Secciones desplegables (fuera del contenedor anterior) -->
+<section id="ventilacion" class="service-section hidden">
+  <h2>Sistemas de ventilación</h2>
+  <div class="card-container">
+    <div class="card">Instalación de extractores</div>
+    <div class="card">Conductos industriales</div>
+    <div class="card">Sistemas de ventilación forzada</div>
+    <div class="card">Mantenimiento de ventilación</div>
+  </div>
+</section>
+
+<section id="aire" class="service-section hidden">
+  <h2>Sistemas de aire comprimido</h2>
+  <div class="card-container">
+    <div class="card">Instalación de compresores</div>
+    <div class="card">Redes de distribución</div>
+    <div class="card">Filtrado y secado de aire</div>
+    <div class="card">Reparación de líneas</div>
+  </div>
+</section>
+
+<section id="agua" class="service-section hidden">
+  <h2>Cañerías de agua a presión</h2>
+  <div class="card-container">
+    <div class="card">Montaje de cañerías de acero</div>
+    <div class="card">Conexiones soldadas o bridadas</div>
+    <div class="card">Pruebas de presión</div>
+    <div class="card">Reemplazo de tramos dañados</div>
+  </div>
+</section>
+
+<section id="metalurgia" class="service-section hidden">
+  <h2>Metalúrgica en general</h2>
+  <div class="card-container">
+    <div class="card">Estructuras metálicas</div>
+    <div class="card">Soportes y bastidores</div>
+    <div class="card">Fabricación a medida</div>
+    <div class="card">Servicios de soldadura</div>
+  </div>
+</section>
+
+
+
+
+
+    <section id="contacto" class="content-section">
+      <div class="container">
+        <h2>Contáctanos</h2>
+        <p>¿Tienes alguna consulta? No dudes en contactarnos, estaremos encantados de ayudarte.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 bitman. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>
