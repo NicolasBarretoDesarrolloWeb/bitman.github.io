@@ -6,7 +6,7 @@
 }
 
 main {
-  padding-top: 85px; /* misma altura que el header */
+  padding-top: 80px; /* misma altura que el header */
 }
 
 body {
@@ -20,10 +20,10 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Para que quede detrás del contenido */
+  z-index: -1; 
 }
 /* =====================
-   Fondo de círculos animados realistas
+   Fondo de círculos animados
 ===================== */
 .circles-container {
   position: absolute;
@@ -41,7 +41,7 @@ body {
   filter: blur(1px);
 }
 
-/* Tamaños variados */
+
 .size-sm { width: 50px; height: 50px; }
 .size-md { width: 100px; height: 100px; }
 .size-lg { width: 150px; height: 150px; }
