@@ -489,11 +489,7 @@ header {
     transform: translateY(0);
   }
 }
-#productos.content-section {
 
-  padding: 40px 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 
 /* Contenedor centrado y con ancho máximo */
 #productos .container {
@@ -503,19 +499,7 @@ header {
 }
 
 /* Título */
-#productos h2 {
-font-size: 2.75rem;
 
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  text-shadow: 1px 1px 4px rgba(39, 60, 117, 0.25);
-  position: relative;
-  display: inline-block;
-  margin-bottom: 30px;
-    display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 /* Párrafo */
 #productos p {
@@ -579,11 +563,6 @@ font-size: 2.75rem;
   text-align: center;
 }
 
-.service-section h2 {
-  font-size: 2rem;
-  margin-bottom: 30px;
-  color: #2c3e50;
-}
 
 .card-container {
   display: flex;
@@ -695,11 +674,7 @@ footer {
   width: 100%;
   backdrop-filter: blur(6px);
 }
-.contact-form h2 {
-  color: #fff;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
+
 .contact-form label {
   color: #fff;
   font-weight: 600;
@@ -809,8 +784,11 @@ footer {
   .slider,
   .slider img {
     height: 300px;
+    display: none;
   }
   .slider-btn {
     display: none;
   }
 }
+ 
+  

@@ -1,7 +1,13 @@
 // =========================
-// SLIDER DE IMÁGENES (Hero)
+// SCRIPT PRINCIPAL
 // =========================
 document.addEventListener('DOMContentLoaded', () => {
+  // Siempre empezar arriba al cargar
+  window.scrollTo(0, 0);
+
+  // =========================
+  // SLIDER DE IMÁGENES (Hero)
+  // =========================
   const images = document.querySelectorAll('.slider img');
   const overlays = document.querySelectorAll('.overlay');
   const total = images.length;
@@ -9,21 +15,17 @@ document.addEventListener('DOMContentLoaded', () => {
   let slideInterval;
 
   function showSlide(index) {
-    images.forEach((img, i) => {
+    images.forEach((img) => {
       img.classList.remove('active', 'animate-vertical', 'animate-horizontal', 'animate-fade');
       void img.offsetWidth; // Reinicia animación
     });
-    overlays.forEach(overlay => overlay.classList.remove('active'));
+    overlays.forEach((overlay) => overlay.classList.remove('active'));
 
     images[index].classList.add('active');
 
-    if (index === 0) {
-      images[index].classList.add('animate-vertical');
-    } else if (index === 1) {
-      images[index].classList.add('animate-horizontal');
-    } else if (index === 2) {
-      images[index].classList.add('animate-fade');
-    }
+    if (index === 0) images[index].classList.add('animate-vertical');
+    else if (index === 1) images[index].classList.add('animate-horizontal');
+    else if (index === 2) images[index].classList.add('animate-fade');
 
     setTimeout(() => overlays[index].classList.add('active'), 400);
   }
@@ -39,11 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
     clearInterval(slideInterval);
   }
 
-  // Inicia el slider
   showSlide(currentSlideIndex);
   startSlideShow();
 
-  // Botones de navegación
+  // Botones del slider
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
 
@@ -68,8 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // =====================
   window.mostrarSeccion = function (id) {
     const secciones = document.querySelectorAll("section.content-section, #contacto, #proyectos, #redes");
-
-    secciones.forEach(seccion => seccion.classList.add("hidden"));
+    secciones.forEach(sec => sec.classList.add("hidden"));
 
     const target = document.getElementById(id);
     if (target) {
@@ -81,9 +81,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const redes = document.getElementById("redes");
       if (redes) redes.classList.remove("hidden");
     }
+
+    // Cerrar menú móvil automáticamente solo en móviles
+    if (window.innerWidth < 768) {
+      const menuMobile = document.getElementById('menuMobile');
+      if (menuMobile && !menuMobile.classList.contains('hidden')) {
+        menuMobile.classList.add('hidden');
+      }
+    }
   };
 
-  // Mostrar sección "nosotros" al cargar
   mostrarSeccion('nosotros');
 
   // =====================
@@ -125,6 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
         feedback.textContent = '';
       }
 
+      // Validación captcha simple (3 + 4 = 7)
       const captchaValue = form.captcha.value.trim();
       if (captchaValue !== '7') {
         event.preventDefault();
@@ -197,7 +205,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // =====================
-  // MENU RESPONSIVE
+  // MENU MOBILE
+  // =====================
+  const menuBtn = document.getElementById('menuBtn');
+  const menuMobile = document.getElementById('menuMobile');
+
+  if (menuBtn && menuMobile) {
+    menuBtn.addEventListener('click', () => {
+      menuMobile.classList.toggle('hidden');
+    });
+  }
+
+  // =====================
+  // MENU NAV (desktop)
   // =====================
   const btnMenu = document.getElementById('btnMenu');
   const menuNav = document.getElementById('menuNav');
@@ -214,68 +234,26 @@ document.addEventListener('DOMContentLoaded', () => {
   window.toggleSection = function (id) {
     const sections = document.querySelectorAll('.service-section');
     sections.forEach(section => {
-      if (section.id === id) {
-        section.classList.toggle('hidden');
-      } else {
-        section.classList.add('hidden');
-      }
+      if (section.id === id) section.classList.toggle('hidden');
+      else section.classList.add('hidden');
     });
   };
 });
+
 // =====================
 // PARTICULAS POLVO BRILLANTE
 // =====================
 tsParticles.load("particles-js", {
-  background: {
-    color: "transparent"
-  },
+  background: { color: "transparent" },
   fpsLimit: 60,
   particles: {
-    number: {
-      value: 40, // pocas partículas para que sea sutil
-      density: { enable: true, area: 800 }
-    },
-    color: { value: ["#ffffff", "#a855f7", "#ec4899"] }, // blanco + tonos violetas/rosados
+    number: { value: 40, density: { enable: true, area: 800 } },
+    color: { value: ["#ffffff", "#a855f7", "#ec4899"] },
     shape: { type: "circle" },
-    opacity: {
-      value: 0.6,
-      random: true,
-      animation: {
-        enable: true,
-        speed: 1,
-        minimumValue: 0.2,
-        sync: false
-      }
-    },
-    size: {
-      value: { min: 1, max: 3 },
-      animation: {
-        enable: true,
-        speed: 2,
-        minimumValue: 0.5,
-        sync: false
-      }
-    },
-    move: {
-      enable: true,
-      speed: 0.6, // lento para sensación de polvo flotante
-      direction: "none",
-      random: true,
-      straight: false,
-      outModes: "out"
-    }
+    opacity: { value: 0.6, random: true, animation: { enable: true, speed: 1, minimumValue: 0.2 } },
+    size: { value: { min: 1, max: 3 }, animation: { enable: true, speed: 2, minimumValue: 0.5 } },
+    move: { enable: true, speed: 0.6, direction: "none", random: true, straight: false, outModes: "out" }
   },
-  interactivity: {
-    events: {
-      onHover: { enable: false },
-      onClick: { enable: false }
-    }
-  },
+  interactivity: { events: { onHover: { enable: false }, onClick: { enable: false } } },
   detectRetina: true
-});
-const menuBtn = document.getElementById('menuBtn');
-const menuMobile = document.getElementById('menuMobile');
-
-menuBtn.addEventListener('click', () => {
-  menuMobile.classList.toggle('hidden');
 });
